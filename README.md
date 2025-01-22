@@ -15,7 +15,11 @@
 ## 1. Данные
 >Существует не так много готовых качественных датасетов на русском языке, подходящих под задачу компании. Однако некий материал всё же удалось собрать. Ниже приводится описание "желаемого" датасета — если планируется сбор данных вручную, а также существующие варианты, которые можно использовать.
 
-#### Описание "желаемого" датасета
+Для обучения Whisper требуется датасет формата:
+|Аудиозапись (<= 30 сек, 16кГЦ, моноканальный)|Транскрипция|
+|-|--------|
+
+### Описание "желаемого" датасета
 1) **Объём.** <br>
 Выбирая объём, важно уделять внимание и качеству данных, ориентироваться можно на 1000-5000 часов (далее увидим, что существуют самые разные датасеты от 73 ч. до 20000 ч.). Возможно, стоит скомпилировать открытые датасеты и обучить модель на одном большом наборе данных. 
    
@@ -28,7 +32,7 @@
 4) **Стиль транскрипции.** <br>
 Исходя из конечного продукта — готовой расшифровки речи спикеров, нам нужна транскрипция с сохранением знаков пунктуации.
    
-#### Существующие варианты
+### Существующие варианты
 
 Ниже приведены датасеты на **русском языке**, которые могут подойти для дообучения.
 
@@ -46,3 +50,103 @@
 |[PyAra: Russian bona fide and spoofed speech](https://www.kaggle.com/datasets/alep079/pyara)| |Набор аудиозаписей реального и синтезированного голоса. Он содержит аудиозаписи на русском языке продолжительностью от 3 до 10 секунд в формате WAV|
 |[Russian Single Speaker Speech Dataset](https://www.kaggle.com/datasets/bryanpark/russian-single-speaker-speech-dataset)| |CSS10 — набор данных для распознавания речи одного говорящего на десяти языках. Он состоит из коротких аудиозаписей аудиокниг LibriVox и их текстов|
 |[VoxLingua107](https://cs.taltech.ee/staff/tanel.alumae/data/voxlingua107/)|73 часа|Минус: датасет не содержит расшифровки, только аудиозаписи|
+
+Хорошие датасеты на *английском* языке: 
+[LibriSpeech](https://datasets.activeloop.ai/docs/ml/datasets/librispeech-dataset/),
+[RAVDESS](https://datasets.activeloop.ai/docs/ml/datasets/ravdess-dataset/),
+[ATIS](https://datasets.activeloop.ai/docs/ml/datasets/atis-dataset/).
+
+## 2. Мощности
+Оптимально: 2 графических процессора A100 с 40 ГБ.
+
+## 3. Примеры других дообученных моделей Whisper
+|Модель|Язык|Комментарий|
+|-|--------|---|
+|[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители|
+
+`whisper-large-v3`
+
+* [Qwzerty/whisper-large-v3-ru](https://huggingface.co/Qwzerty/whisper-large-v3-ru)
+   <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```learning_rate: 5e-05
+   train_batch_size: 96
+   eval_batch_size: 32
+   seed: 42
+   distributed_type: multi-GPU
+   num_devices: 4
+   total_train_batch_size: 384
+   total_eval_batch_size: 128
+   optimizer: Use adamw_torch with betas=(0.9,0.999) and epsilon=1e-08 and optimizer_args=No additional optimizer arguments
+   lr_scheduler_type: linear
+   lr_scheduler_warmup_steps: 50
+   training_steps: 250
+   mixed_precision_training: Native AMP
+   ```
+     * Дообучалась на данных Common Voice 11.0.
+     * Нет данных про WER.
+   </details>
+
+
+* [primeline/whisper-large-v3-german](https://huggingface.co/primeline/whisper-large-v3-german)
+   <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```Batch size: 1024
+   Epochs: 2
+   Learning rate: 1e-5
+   Data augmentation: No
+   ```
+     
+     * Нет данных про WER.
+   </details>
+  
+* [Watarungurunnn/whisper-large-v3-ja](https://huggingface.co/Watarungurunnn/whisper-large-v3-ja)
+   <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```learning_rate: 1e-05
+   train_batch_size: 16
+   eval_batch_size: 16
+   seed: 42
+   gradient_accumulation_steps: 2
+   total_train_batch_size: 32
+   optimizer: Adam with betas=(0.9,0.999) and epsilon=1e-08
+   lr_scheduler_type: linear
+   lr_scheduler_warmup_steps: 500
+   training_steps: 4000
+   mixed_precision_training: Native AMP
+   ```
+   
+     * Дообучалась на данных Common Voice 16.0.
+     * Loss: 0.4210
+     * Wer: 14.6965. 🚨
+   </details>
+
+
+`whisper-large-v2`
+* [vumichien/whisper-large-v2-jp](https://huggingface.co/vumichien/whisper-large-v2-jp)
+  <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```learning_rate: 1e-05
+   train_batch_size: 8
+   eval_batch_size: 8
+   seed: 42
+   gradient_accumulation_steps: 2
+   total_train_batch_size: 16
+   optimizer: Adam with betas=(0.9,0.999) and epsilon=1e-08
+   lr_scheduler_type: linear
+   lr_scheduler_warmup_steps: 500
+   training_steps: 10000
+   mixed_precision_training: Native AMP
+   ```
+   
+     * Дообучалась на данных Common Voice 11.0.
+     * Loss: 0.2352
+     * Wer: 8.1166
+     * Cer: 5.0032
+   </details>
+
+`whisper-large-v3-turbo`
