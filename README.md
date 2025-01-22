@@ -7,7 +7,7 @@
 3. `pipeline-additional-training-whisper.xlsx` <br>
    Пайплайн процесса дообучения в формате `.xlsx` (разбивка по шагам привязана к коду).
 5. `run-speech-recognition` <br>
-Примеры запуска процесса обучения модели обработки речи, использующей Python, библиотеку Hugging Face Transformers, контрольную точку `openai/whisper-large-v3` и дообучающуюся на данных `mozilla-foundation/common_voice_17_0`. Первая команда запускается на одном графическом процессоре (GPU), а вторая — на двух.
+Примеры запуска процесса обучения модели обработки речи, использующей Python, библиотеку Hugging Face Transformers, контрольную точку `openai/whisper-large-v3` и дообучающуюся на данных `mozilla-foundation/common_voice_17_0`. Первая команда запускается на одном графическом процессоре (GPU), а вторая — на двух. ([Источник: Automatic Speech Recognition Examples](https://github.com/huggingface/transformers/tree/main/examples/pytorch/speech-recognition#single-gpu-whisper-training:~:text=Single%20GPU%20Whisper%20Training))
 6. `whisper-large-v3-russian-description.ipynb` <br>
 Описание конфигурации чужой модели `antony66/whisper-large-v3-russian`. В файле содержится информация о параметрах дообучения и обработке аудиоданных с комментариями.
 
@@ -30,10 +30,12 @@
 
 Ниже приведены датасеты на **русском языке**, которые могут подойти для дообучения.
 
+[Коллаб с примером загрузки датасетов](https://colab.research.google.com/drive/1M8x_3dbMID7lqp0kMxGcFVluHvNJwBsg?usp=sharing)
+
 |Датасет|Объем|Комментарий|
 |-|--------|---|
-|[mozilla-foundation/common_voice_17_0](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0)|||
-|[WueNLP/sib-fleurs](https://huggingface.co/datasets/WueNLP/sib-fleurs)| | |
+|[mozilla-foundation/common_voice_17_0](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0)|train: 26377 строк <br> val: 10203 строки <br> test: 10203 строки||
+|[WueNLP/sib-fleurs](https://huggingface.co/datasets/WueNLP/sib-fleurs)|train: 733 строки <br> val: 71	строка <br> test: 173 строки |Датасет собран из озвученных wikibooks. Темы: наука, технологии, путешествия, политика, спорт, здоровье, развлечения и география|
 |[facebook/2M-Belebele](https://huggingface.co/datasets/facebook/2M-Belebele)| | |
 |[SeraDreams/Enigma-Dataset](https://huggingface.co/datasets/SeraDreams/Enigma-Dataset)| | |
 |[google/fleurs](https://huggingface.co/datasets/google/fleurs)| | |
