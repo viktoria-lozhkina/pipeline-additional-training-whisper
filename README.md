@@ -57,7 +57,7 @@
 [ATIS](https://datasets.activeloop.ai/docs/ml/datasets/atis-dataset/).
 
 ## 2. Мощности
-Для модели large оптимально: 2 графических процессора A100 с 40 ГБ.
+Для модели large оптимально: 2 графических процессора A100 с 40 ГБ.  <br> 
 Для модели small: подойдет Google Collab (5 часов на GPU T4, около 10 кредитов в Google Colab Pro) ([источник](https://astanahub.com/ru/blog/obuchaem-whisper-small-dlia-raspoznavaniia-kazakhskoi-rechi)).
 
 ## 3. Примеры других дообученных моделей Whisper
@@ -66,7 +66,9 @@
 |-|--------|---|---|
 |[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Average WER = 6.66|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители. **Авторство:** мед.компания Nyra Health |
 |[syvai/hviske-v2](https://huggingface.co/syvai/hviske-v2)|Датский|CoRal CER = 4.7% ± 0.07% <br> CoRal WER = 11.8% ± 0.3%|Модель обучена на Whisper v2 и датасете CoRal. **Авторство:** небольшая консалтинговая компания Seven.ai|
-|[Oriserve/Whisper-Hindi2Hinglish-Prime](https://huggingface.co/Oriserve/Whisper-Hindi2Hinglish-Prime)|Hinglish - английская речь носителей хинди|WER on google/fleurs=28.681, <br> WER on Common Voice=32.431, <br> WER on Indic-Voices = 60.822|Дообучение Whisper Large v3 для разговорной речи с акцентом. **Авторство:** oriserve — компания, продающая ИИ-технологии, голосовых агентов и т.п|
+|[Oriserve/Whisper-Hindi2Hinglish-Prime](https://huggingface.co/Oriserve/Whisper-Hindi2Hinglish-Prime)|Hinglish - английская речь носителей хинди|~550 часов речи <br> WER on google/fleurs=28.681, <br> WER on Common Voice=32.431, <br> WER on Indic-Voices = 60.822|Дообучение Whisper Large v3 для разговорной речи с акцентом. **Авторство:** oriserve — компания, продающая ИИ-технологии, голосовых агентов и т.п|
+|[AiLab-IMCS-UL/whisper-large-v3-lv-late-cv19](https://huggingface.co/AiLab-IMCS-UL/whisper-large-v3-lv-late-cv19)|Латышский|282.4 часов речи (Latvian Common Voice 19.0 + LATE-Media 2.0), наименьшая оценка WER=3.2|**Авторство:** ailab.lv, Латвийский университет, Институт Математики и информатики|
+|[https://huggingface.co/Ayoub-Laachir/MaghrebVoice](https://huggingface.co/Ayoub-Laachir/MaghrebVoice)|||Авторство: |
 |[]()|||Авторство: |
 
 Далее приводим модели, которые чуть менее репрезентативны (часто это модели в разработке, без подробностей дообучения):
