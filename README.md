@@ -57,12 +57,18 @@
 [ATIS](https://datasets.activeloop.ai/docs/ml/datasets/atis-dataset/).
 
 ## 2. Мощности
-Оптимально: 2 графических процессора A100 с 40 ГБ.
+Для модели large оптимально: 2 графических процессора A100 с 40 ГБ.
+Для модели small: подойдет Google Collab (5 часов на GPU T4, около 10 кредитов в Google Colab Pro) ([источник](https://astanahub.com/ru/blog/obuchaem-whisper-small-dlia-raspoznavaniia-kazakhskoi-rechi)).
 
 ## 3. Примеры других дообученных моделей Whisper
-|Модель|Язык|Комментарий|
-|-|--------|---|
-|[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители|
+Модели от более репрезентативных авторов:
+|Модель|Язык| Параметры/оценка модели|Комментарий|
+|-|--------|---|---|
+|[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Average WER = 6.66|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители. Авторство: мед.компания Nyra Health |
+|[syvai/hviske-v2](https://huggingface.co/syvai/hviske-v2)|Датский|CoRal CER = 4.7% ± 0.07% <br> CoRal WER = 11.8% ± 0.3%|Модель обучена на Whisper v2 и датасете CoRal. Авторство: небольшая консалтинговая компания Seven.ai|
+|[]()|||Авторство: |
+
+Далее приводим модели, которые чуть менее репрезентативны (часто это модели в разработке, без подробностей дообучения):
 
 `whisper-large-v3`
 
