@@ -64,8 +64,9 @@
 Модели от более репрезентативных авторов:
 |Модель|Язык| Параметры/оценка модели|Комментарий|
 |-|--------|---|---|
-|[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Average WER = 6.66|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители. Авторство: мед.компания Nyra Health |
-|[syvai/hviske-v2](https://huggingface.co/syvai/hviske-v2)|Датский|CoRal CER = 4.7% ± 0.07% <br> CoRal WER = 11.8% ± 0.3%|Модель обучена на Whisper v2 и датасете CoRal. Авторство: небольшая консалтинговая компания Seven.ai|
+|[nyrahealth/CrisperWhisper](https://huggingface.co/nyrahealth/CrisperWhisper)|Английский|Average WER = 6.66|Усовершенствованная модель Whisper Large v3, с более четкой разметкой, не пропускает фальстарт, паузы, заполнители. **Авторство:** мед.компания Nyra Health |
+|[syvai/hviske-v2](https://huggingface.co/syvai/hviske-v2)|Датский|CoRal CER = 4.7% ± 0.07% <br> CoRal WER = 11.8% ± 0.3%|Модель обучена на Whisper v2 и датасете CoRal. **Авторство:** небольшая консалтинговая компания Seven.ai|
+|[Oriserve/Whisper-Hindi2Hinglish-Prime](https://huggingface.co/Oriserve/Whisper-Hindi2Hinglish-Prime)|Hinglish - английская речь носителей хинди|WER on google/fleurs=28.681, <br> WER on Common Voice=32.431, <br> WER on Indic-Voices = 60.822|Дообучение Whisper Large v3 для разговорной речи с акцентом. **Авторство:** oriserve — компания, продающая ИИ-технологии, голосовых агентов и т.п|
 |[]()|||Авторство: |
 
 Далее приводим модели, которые чуть менее репрезентативны (часто это модели в разработке, без подробностей дообучения):
@@ -156,3 +157,25 @@
    </details>
 
 `whisper-large-v3-turbo`
+
+`whisper-small`
+* [armanibadboy/whisper-small-kk](https://huggingface.co/armanibadboy/whisper-small-kk), [статья на АстанаХаб](https://astanahub.com/ru/blog/obuchaem-whisper-small-dlia-raspoznavaniia-kazakhskoi-rechi)
+  <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```learning_rate: 1e-05
+   train_batch_size: 16
+   eval_batch_size: 8
+   seed: 42
+   optimizer: Use OptimizerNames.ADAMW_TORCH with betas=(0.9,0.999) and epsilon=1e-08 and optimizer_args=No additional optimizer arguments
+   lr_scheduler_type: linear
+   lr_scheduler_warmup_steps: 500
+   training_steps: 4000
+   mixed_precision_training: Native AMP
+   ```
+   
+     * Казахский язык
+     * Дообучалась на данных Common Voice 17.0.
+     * Loss: 0.0002
+     * Wer: 0.0
+   </details>
