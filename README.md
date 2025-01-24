@@ -134,6 +134,24 @@
      * Wer: 14.6965. 🚨
    </details>
 
+* [DILHTWD/whisper-large-v3-hsb](https://huggingface.co/DILHTWD/whisper-large-v3-hsb) Сербский
+   <details>
+   <summary>Настройки обучения модели</summary>
+   
+   ```Training Data
+   Source: Stiftung für das sorbische Volk / Załožba za serbski lud (https://stiftung.sorben.com/)
+   Volume: 1493 Minutes, 10% Validation Set, 10% Test Set
+   Training Details
+   
+   Hyperparameters:
+   Batch size: 64
+   Learning rate: 3e-6, linear decay
+   Optimizer: AdamW
+   Warmup: 1000 steps
+   Additional Techniques: BF16 training, initial 15 layers frozen
+   ```
+     * Wer: 5.7
+   </details>
 
 `whisper-large-v2`
 * [vumichien/whisper-large-v2-jp](https://huggingface.co/vumichien/whisper-large-v2-jp)
