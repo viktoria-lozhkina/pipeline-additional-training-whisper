@@ -70,7 +70,6 @@
 |[AiLab-IMCS-UL/whisper-large-v3-lv-late-cv19](https://huggingface.co/AiLab-IMCS-UL/whisper-large-v3-lv-late-cv19)|Латышский|282.4 часов речи (Latvian Common Voice 19.0 + LATE-Media 2.0), наименьшая оценка WER=3.2|**Авторство:** ailab.lv, Латвийский университет, Институт Математики и информатики|
 |[https://huggingface.co/Ayoub-Laachir/MaghrebVoice](https://huggingface.co/Ayoub-Laachir/MaghrebVoice)|Марокканский диалект арабского языка|Дообученная Whisper Large V3, датасет собрал автор (~3462 примера), WER = 3.1467%, CER = 2.3893%|Авторство: не компания, пользователь Ayoub laachir|
 |[aTrain-core/distil-whisper-large-v3-de-kd](https://huggingface.co/aTrain-core/distil-whisper-large-v3-de-kd)|Немецкий|Normalised WER: 6.324 <br> Orthographic WER: 8.233| Сокращенная версия Whisper Large V3, дообучена на Common Voice 15.0.<br> **Авторство:** группа aTrain, у них много дообученных моделей, в том числе занимаются диаризацией |
-|[]()||| **Авторство:**  |
 
 Далее приводим модели, которые чуть менее репрезентативны (часто это модели в разработке, без подробностей дообучения):
 
@@ -176,8 +175,6 @@
      * Wer: 8.1166
      * Cer: 5.0032
    </details>
-
-`whisper-large-v3-turbo`
 
 `whisper-small`
 * [armanibadboy/whisper-small-kk](https://huggingface.co/armanibadboy/whisper-small-kk), [статья на АстанаХаб](https://astanahub.com/ru/blog/obuchaem-whisper-small-dlia-raspoznavaniia-kazakhskoi-rechi)
